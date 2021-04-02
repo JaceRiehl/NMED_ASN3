@@ -1,0 +1,9 @@
+* {
+	box-sizing: border-box;
+	font-family: 'Coda Caption', cursive;
+}
+
+body, html {
+	min-height: 100vh;
+	margin: 0;
+}
