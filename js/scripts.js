@@ -1,5 +1,6 @@
 
 var vidcapture, ctracker, drawcanvas
+var flag = false
 
 
 function setup() {
@@ -26,7 +27,13 @@ function draw() {
 	translate(vidcapture.width, 0)
 	scale(-1, 1)
 	
-	image(vidcapture, 0, 0)
+	if($('#camera').val() == "on") {
+		image(vidcapture, 0, 0)
+		flag = true
+	} else if($('#camera').val() == "off" && flag){
+		background(255,255,255)
+		flag = false
+	}
 	
 
 	
@@ -47,19 +54,40 @@ function draw() {
 		} else if(cursorTemp == "mouth") {
 			cursor = 60
 		}
+		
+		var x = map(positions[cursor][0], 560, 340, windowWidth/2, 0, true)
+		var y = map(positions[cursor][1], 320, 220, windowHeight * 5/8, 0, true)
+		print("x: ")
+		print(positions[cursor][0])
+		// // 640 130
+		//340 560
+		// // 40 430
+		// 320 220
+		print("y: ")
+		print(positions[cursor][1])
 
 		fill($("#color").val())
 		if($('#match').val() == "on") {
 			$("#stroke").val($("#color").val())
 		} 
 		stroke($("#stroke").val())
+
 		if($("#object").val() == "line") {
-			line(positions[cursor][0], positions[cursor][1], positions[cursor][0], positions[cursor][1]-size)
+			line(x, y, x, y-size)
 		} else if($("#object").val() == "ellipse") {
-			ellipse(positions[cursor][0], positions[cursor][1], size)
+			ellipse(x, y, size)
 		} else if ($("#object").val() == "rect"){
-			rect(positions[cursor][0], positions[cursor][1], size, size)
+			rect(x, y, size, size)
 		}
+
+
+		// if($("#object").val() == "line") {
+		// 	line(positions[cursor][0], positions[cursor][1], positions[cursor][0], positions[cursor][1]-size)
+		// } else if($("#object").val() == "ellipse") {
+		// 	ellipse(positions[cursor][0], positions[cursor][1], size)
+		// } else if ($("#object").val() == "rect"){
+		// 	rect(positions[cursor][0], positions[cursor][1], size, size)
+		// }
 		
 		// line(positions[23][0], positions[23][1], positions[23][0]-30, positions[23][1]-30)
 		// line(positions[28][0], positions[28][1], positions[28][0]+30, positions[28][1]-30)
