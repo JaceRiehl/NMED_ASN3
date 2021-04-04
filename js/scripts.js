@@ -3,7 +3,7 @@ var vidcapture, ctracker, drawcanvas
 
 
 function setup() {
-	var cnv = createCanvas(windowWidth, windowHeight)
+	var cnv = createCanvas(windowWidth/2, windowHeight * 5/8)
 	cnv.parent('p5Canvas')
 
 	vidcapture = createCapture(VIDEO)
@@ -25,22 +25,40 @@ function draw() {
 	// background(255,10)
 	translate(vidcapture.width, 0)
 	scale(-1, 1)
+	
+	image(vidcapture, 0, 0)
+	
 
-	// image(vidcapture, 0, 0)
+	
 
 
 	var positions = ctracker.getCurrentPosition()
 
-	if(positions) {
-		// ctracker.draw(drawcanvas)
+	if(positions && $('#currentDrawing').val() == "on") {
+		var size = $('#size').val()
+		var cursorTemp = $('#cursor').val()
+		var cursor = 0
+		if(cursorTemp == "nose") {
+			cursor = 62
+		} else if(cursorTemp == "lEye") {
+			cursor = 27
+		} else if(cursorTemp == "rEye") {
+			cursor = 32
+		} else if(cursorTemp == "mouth") {
+			cursor = 60
+		}
+
 		fill($("#color").val())
-		print($("#color").val())
+		if($('#match').val() == "on") {
+			$("#stroke").val($("#color").val())
+		} 
+		stroke($("#stroke").val())
 		if($("#object").val() == "line") {
-			line(positions[23][0], positions[23][1], positions[23][0]-30, positions[23][1]-30)
+			line(positions[cursor][0], positions[cursor][1], positions[cursor][0], positions[cursor][1]-size)
 		} else if($("#object").val() == "ellipse") {
-			ellipse(positions[62][0], positions[62][1], 20)
-		} else {
-			rect(positions[62][0], positions[62][1], 20, 20)
+			ellipse(positions[cursor][0], positions[cursor][1], size)
+		} else if ($("#object").val() == "rect"){
+			rect(positions[cursor][0], positions[cursor][1], size, size)
 		}
 		
 		// line(positions[23][0], positions[23][1], positions[23][0]-30, positions[23][1]-30)
@@ -74,3 +92,8 @@ function draw() {
 	// line(0, 0, 50, 50)
 	
 }
+
+
+$(".clear").on("click", function() {
+	background(255,255,255)
+})

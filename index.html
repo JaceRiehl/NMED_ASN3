@@ -6,18 +6,72 @@
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
-	<div class="title">
-		<h1>Welcome to the website</h1>
-		<h2>by Jace Riehl</h2>
+	<div class="center">
+		<h1 class="center name">Welcome to the website</h1>
+	</div>
+	<div class="center">
+		<h2 class="removeMargin">by Jace Riehl</h2>
 	</div>
 	<div id="p5Canvas"></div>
-	<select name="object" id="object">
-	    <option value="ellipse">Ellipse</option>
-	    <option value="line">Line</option>
-  	</select>
-  	<form action="/action_page.php">
-  		<input type="color" id="color" name="color" value="#ff0000">
-	</form>
+	
+	<div class="center">
+		<div class="drawItem">
+			<h4 class="center name">Shape</h4>
+			<select class="center" name="object" id="object">
+			    <option value="ellipse">Ellipse</option>
+			    <option value="line">Line</option>
+			    <option value="rect">Rectangle</option>
+		  	</select>
+		</div>
+		<div class="drawItem">
+			<h4 class="center name">Fill</h4>
+	  		<form class="center">
+	  			<input type="color" id="color" name="color" value="#ff0000">
+			</form>
+	  	</div>
+	  	<div class="drawItem">
+	  		<h4 class="center name">Stroke</h4>
+	  		<form class="center">
+	  			<input type="color" id="stroke" name="stroke" value="#000fff">
+			</form>
+	  	</div>
+	  	<div class="drawItem">
+	  		<h4 class="center name removeMargin">Match</h4>
+	  		<h4 class="center name removeMargin">Stroke/Fill</h4>
+	  		<select class="center" name="match" id="match">
+	  			<option value="off">Off</option>
+			    <option value="on">On</option>
+	  		</select>
+	  	</div>
+	  	<div class="drawItem">
+	  		<h4 class="center name">Size</h4>
+	  		<form class="center">
+	  			<input type="number" id="size" name="size" min="1" value="20">
+			</form>
+	  	</div>
+		<div class="drawItem">
+			<h4 class="center name">Draw</h4>
+			<select class="center" name="currentDrawing" id="currentDrawing">
+			    <option value="on">On</option>
+			    <option value="off">Off</option>
+	  		</select>
+		</div>
+		<div class="drawItem">
+			<h4 class="center name">Cursor</h4>
+			<select class="cursor" name="cursor" id="cursor">
+			    <option value="nose">Nose</option>
+			    <option value="rEye">Right Eye</option>
+			    <option value="lEye">Left Eye</option>
+			    <option value="mouth">Mouth</option>
+	  		</select>
+		</div>
+	</div>
+	<div class="center">
+		<div class="drawItem">
+			<button class="clear">Clear</button>
+		</div>
+	</div>
+  	
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
