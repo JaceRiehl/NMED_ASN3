@@ -9,7 +9,7 @@ function setup() {
 	cnv.parent('p5Canvas')
 
 	vidcapture = createCapture(VIDEO)
-	vidcapture.size(windowWidth, windowHeight * 5/8)
+	vidcapture.size(windowWidth, windowHeight)
 	vidcapture.hide()
 
 	ctracker = new clm.tracker()
@@ -55,8 +55,8 @@ function draw() {
 			cursor = 60
 		}
 		
-		var x = map(positions[cursor][0], windowWidth/2+300, windowWidth/2-300, windowWidth, 0, false)
-		var y = map(positions[cursor][1], ((windowHeight * 5/8)/2)+100, ((windowHeight * 5/8)/2)-100, windowHeight * 5/8, 0, false)
+		var x = map(positions[cursor][0], windowWidth/2+100, windowWidth/2-100, windowWidth, 0, false)
+		var y = map(positions[cursor][1], ((windowHeight * 5/8)/2)+80, ((windowHeight * 5/8)/2)-80, windowHeight * 5/8, 0, false)
 
 
 		fill($("#color").val())
