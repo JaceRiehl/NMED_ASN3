@@ -56,7 +56,7 @@ function draw() {
 			cursor = 60
 		}
 		
-		var x = map(positions[cursor][0],  windowWidth/2+100, windowWidth/2-100, windowWidth, windowWidth/2, false)
+		var x = map(positions[cursor][0],  windowWidth/2+150, windowWidth/2-150, windowWidth, windowWidth/2, false)
 		var y = map(positions[cursor][1], ((windowHeight * 5/8)/2)+80, ((windowHeight * 5/8)/2)-80, windowHeight, 0, false)
 	
 		fill($("#color").val())
